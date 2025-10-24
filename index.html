@@ -16,23 +16,25 @@
         <div class="container">
             <h1 class="title">Weather map</h1>
             <form class="form">
-                <div class="input-wrap">
-                    <label for="cityName">City name</label>
-                    <input
-                        type="text"
-                        class="input"
-                        name="cityName"
-                        placeholder="City name"
-                    />
-                </div>
-                <div class="input-wrap">
-                    <label for="cityId">City ID</label>
-                    <input
-                        type="text"
-                        class="input"
-                        name="cityId"
-                        placeholder="City ID"
-                    />
+                <div class="input-container">
+                    <div class="input-wrap">
+                        <label for="cityName">City name</label>
+                        <input
+                            type="text"
+                            class="input"
+                            name="cityName"
+                            placeholder="City name"
+                        />
+                    </div>
+                    <div class="input-wrap">
+                        <label for="cityId">City ID</label>
+                        <input
+                            type="number"
+                            class="input"
+                            name="cityId"
+                            placeholder="City ID"
+                        />
+                    </div>
                 </div>
                 <div class="radio-container">
                     <div class="radio-wrap">
@@ -47,7 +49,7 @@
                         />
                     </div>
                     <div class="radio-wrap">
-                        <label for="cityId">Imperial</label>
+                        <label for="cityId">City ID</label>
                         <input
                             type="radio"
                             class="radio"
@@ -57,21 +59,21 @@
                         />
                     </div>
                 </div>
-                <div class="weather-info">
-                    <div class="weather-prop">
+                <div class="weather-container">
+                    <div class="weather-wrap">
                         <p>Temprature</p>
                         <span class="prop-value"></span>
                     </div>
-                    <div class="weather-prop">
+                    <div class="weather-wrap">
                         <p>Wind Speed</p>
                         <span class="prop-value"></span>
                     </div>
-                    <div class="weather-prop">
+                    <div class="weather-wrap">
                         <p>Humidity</p>
                         <span class="prop-value"></span>
                     </div>
                 </div>
-                <div class="btn-wrap">
+                <div class="btn-container">
                     <button class="button">Get Weather</button>
                     <button class="button">Cancel</button>
                 </div>
