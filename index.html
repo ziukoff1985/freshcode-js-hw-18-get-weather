@@ -12,5 +12,70 @@
         <link rel="stylesheet" href="./assets/css/styles.css" />
         <title>JS HW 18 Get Weather</title>
     </head>
-    <body></body>
+    <body>
+        <div class="container">
+            <h1 class="title">Weather map</h1>
+            <form class="form">
+                <div class="input-wrap">
+                    <label for="cityName">City name</label>
+                    <input
+                        type="text"
+                        class="input"
+                        name="cityName"
+                        placeholder="City name"
+                    />
+                </div>
+                <div class="input-wrap">
+                    <label for="cityId">City ID</label>
+                    <input
+                        type="text"
+                        class="input"
+                        name="cityId"
+                        placeholder="City ID"
+                    />
+                </div>
+                <div class="radio-container">
+                    <div class="radio-wrap">
+                        <label for="cityName">City name</label>
+                        <input
+                            type="radio"
+                            class="radio"
+                            name="radio"
+                            value="cityName"
+                            id="cityName"
+                            checked
+                        />
+                    </div>
+                    <div class="radio-wrap">
+                        <label for="cityId">Imperial</label>
+                        <input
+                            type="radio"
+                            class="radio"
+                            name="radio"
+                            value="cityId"
+                            id="cityId"
+                        />
+                    </div>
+                </div>
+                <div class="weather-info">
+                    <div class="weather-prop">
+                        <p>Temprature</p>
+                        <span class="prop-value"></span>
+                    </div>
+                    <div class="weather-prop">
+                        <p>Wind Speed</p>
+                        <span class="prop-value"></span>
+                    </div>
+                    <div class="weather-prop">
+                        <p>Humidity</p>
+                        <span class="prop-value"></span>
+                    </div>
+                </div>
+                <div class="btn-wrap">
+                    <button class="button">Get Weather</button>
+                    <button class="button">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>
