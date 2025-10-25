@@ -49,9 +49,14 @@ h1 {
 .input {
     width: 75%;
     padding: 10px 20px;
-    border: 1px solid #000;
+    outline: 1px solid #000;
+    border: none;
     border-radius: 5px;
     background-color: #ffffff;
+}
+
+.input:focus {
+    outline: 1px solid #0a74ee;
 }
 
 .input::placeholder {
@@ -142,6 +147,8 @@ h1 {
     opacity: 0.5;
     pointer-events: none;
     background-color: #b5b5b5;
+    border: none;
+    outline: none;
 }
 
 .input.disabled::placeholder {
