@@ -27,9 +27,8 @@ radios.forEach((radio) => {
 function toggleDisabledFields() {
     const weatherProps = document.querySelectorAll('.prop-value');
     weatherProps.forEach((element) => (element.textContent = '- - -'));
+    inputs.forEach((input) => (input.value = ''));
     cityNameRadio.checked ? searchByCityName() : searchByCityId();
-    cityIdInput.value = '';
-    cityNameInput.value = '';
 }
 
 function searchByCityName() {
