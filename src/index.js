@@ -3,36 +3,30 @@ import { BASE_URL } from './constants.js';
 
 const inputs = document.querySelectorAll('.input');
 const radios = document.querySelectorAll('.radio');
-const weatherProps = document.querySelectorAll('.prop-value');
+const weatherData = document.querySelectorAll('.prop-value');
 const cancelBtn = document.querySelector('button[type="reset"]');
 const form = document.querySelector('.form');
 
 const [cityNameRadio, cityIdRadio] = radios;
 const [cityNameInput, cityIdInput] = inputs;
 
-function setInitialState() {
-    cityNameRadio.checked = true;
-    cityIdRadio.checked = false;
-    toggleDisabledFields();
-}
-
-setInitialState();
-
 radios.forEach((radio) => {
     radio.addEventListener('change', toggleDisabledFields);
 });
 
+// Resets weather display and switches active input based on radio selection.
 function toggleDisabledFields() {
-    weatherProps.forEach((element) => {
-        element.textContent = '- - -';
-        element.classList.remove('error');
+    weatherData.forEach((el) => {
+        el.textContent = '- - -';
+        el.classList.remove('error');
     });
     cityNameRadio.checked
-        ? toggleInputs(cityNameInput, cityIdInput)
-        : toggleInputs(cityIdInput, cityNameInput);
+        ? toggleInputFields(cityNameInput, cityIdInput)
+        : toggleInputFields(cityIdInput, cityNameInput);
 }
 
-function toggleInputs(activeField, inactiveField) {
+// Activates one input field and disables/clears the other.
+function toggleInputFields(activeField, inactiveField) {
     activeField.disabled = false;
     inactiveField.disabled = true;
     activeField.classList.remove('disabled');
@@ -41,6 +35,7 @@ function toggleInputs(activeField, inactiveField) {
     activeField.focus();
 }
 
+// Fetches weather data from API
 async function getWeatherData(city) {
     try {
         const url = cityNameRadio.checked
@@ -52,7 +47,7 @@ async function getWeatherData(city) {
         renderWeatherData(data);
     } catch (error) {
         console.log(error);
-        renderError(error.message);
+        renderError(`${error.message}, try again`);
     }
 }
 
@@ -64,22 +59,31 @@ form.addEventListener('submit', (event) => {
     getWeatherData(city);
 });
 
+// Sets initial state for radio buttons and inputs
+function setInitialState() {
+    cityNameRadio.checked = true;
+    cityIdRadio.checked = false;
+    toggleDisabledFields();
+}
+
 cancelBtn.addEventListener('click', setInitialState);
 
+// Renders temperature, humidity, and wind speed on the UI
 function renderWeatherData(data) {
     const {
         main: { temp, humidity },
         wind: { speed },
     } = data;
-    const [tempElement, windElement, humidityElement] = weatherProps;
+    const [tempElement, windElement, humidityElement] = weatherData;
     tempElement.textContent = `${temp} °C`;
     humidityElement.textContent = `${humidity} %`;
     windElement.textContent = `${speed} m/s`;
 }
 
+// Renders an error message across all weather property elements
 function renderError(message) {
-    weatherProps.forEach((element) => {
-        element.textContent = message;
-        element.classList.add('error');
+    weatherData.forEach((el) => {
+        el.textContent = message;
+        el.classList.add('error');
     });
 }
