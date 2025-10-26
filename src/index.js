@@ -67,8 +67,8 @@ function renderWeatherData(data) {
     } = data;
     const [tempElement, windElement, humidityElement] = weatherData;
     tempElement.textContent = `${temp} °C`;
-    humidityElement.textContent = `${humidity} %`;
     windElement.textContent = `${speed} m/s`;
+    humidityElement.textContent = `${humidity} %`;
 }
 
 // Renders an error message across all weather property elements
