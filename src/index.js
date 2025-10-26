@@ -59,15 +59,6 @@ form.addEventListener('submit', (event) => {
     getWeatherData(city);
 });
 
-// Sets initial state for radio buttons and inputs
-function setInitialState() {
-    cityNameRadio.checked = true;
-    cityIdRadio.checked = false;
-    toggleDisabledFields();
-}
-
-cancelBtn.addEventListener('click', setInitialState);
-
 // Renders temperature, humidity, and wind speed on the UI
 function renderWeatherData(data) {
     const {
@@ -87,3 +78,12 @@ function renderError(message) {
         el.classList.add('error');
     });
 }
+
+// Sets initial state for radio buttons and inputs
+function setInitialState() {
+    cityNameRadio.checked = true;
+    cityIdRadio.checked = false;
+    toggleDisabledFields();
+}
+
+cancelBtn.addEventListener('click', setInitialState);
