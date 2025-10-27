@@ -42,7 +42,6 @@ async function getWeatherData(city) {
             : `${BASE_URL}&id=${city}`;
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
         if (data.cod !== 200) throw new Error(data.message);
         renderWeatherData(data);
     } catch (error) {
