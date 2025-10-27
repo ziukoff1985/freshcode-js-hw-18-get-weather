@@ -68,7 +68,7 @@ function renderWeatherData(data) {
     humidityElement.textContent = `${humidity} %`;
 }
 
-// Sets error message on the UI or clears it to default state
+// Sets error message on UI or clears it to default state
 function setWeatherDisplayState(message) {
     weatherData.forEach((el) => {
         const content = message ? message : '- - -';
