@@ -17,7 +17,7 @@ radios.forEach((radio) => {
     });
 });
 
-// Resets weather display and switches active input based on radio selection.
+// Switches active input based on radio selection.
 function toggleDisabledFields() {
     cityNameRadio.checked
         ? toggleInputFields(cityNameInput, cityIdInput)
@@ -80,7 +80,7 @@ function setWeatherDisplayState(message) {
     });
 }
 
-// Sets initial state for radio buttons and inputs
+// Sets initial state for radio buttons, inputs and weather data
 function setInitialState() {
     cityNameRadio.checked = true;
     cityIdRadio.checked = false;
