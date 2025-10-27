@@ -16,13 +16,10 @@ radios.forEach((radio) => {
 
 // Resets weather display and switches active input based on radio selection.
 function toggleDisabledFields() {
-    weatherData.forEach((el) => {
-        el.textContent = '- - -';
-        el.classList.remove('error');
-    });
     cityNameRadio.checked
         ? toggleInputFields(cityNameInput, cityIdInput)
         : toggleInputFields(cityIdInput, cityNameInput);
+    setWeatherDisplayState();
 }
 
 // Activates one input field and disables/clears the other.
@@ -47,7 +44,7 @@ async function getWeatherData(city) {
         renderWeatherData(data);
     } catch (error) {
         console.log(error);
-        renderError(`${error.message}, try again`);
+        setWeatherDisplayState(`${error.message}, try again`);
     }
 }
 
@@ -71,11 +68,12 @@ function renderWeatherData(data) {
     humidityElement.textContent = `${humidity} %`;
 }
 
-// Renders an error message across all weather property elements
-function renderError(message) {
+// Sets error message on the UI or clears it to default state
+function setWeatherDisplayState(message) {
     weatherData.forEach((el) => {
-        el.textContent = message;
-        el.classList.add('error');
+        const content = message ? message : '- - -';
+        el.textContent = content;
+        el.classList.toggle('error', !!message);
     });
 }
 
