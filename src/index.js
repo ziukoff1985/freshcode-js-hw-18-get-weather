@@ -11,7 +11,10 @@ const [cityNameRadio, cityIdRadio] = radios;
 const [cityNameInput, cityIdInput] = inputs;
 
 radios.forEach((radio) => {
-    radio.addEventListener('change', toggleDisabledFields);
+    radio.addEventListener('change', () => {
+        toggleDisabledFields();
+        setWeatherDisplayState();
+    });
 });
 
 // Resets weather display and switches active input based on radio selection.
@@ -19,7 +22,6 @@ function toggleDisabledFields() {
     cityNameRadio.checked
         ? toggleInputFields(cityNameInput, cityIdInput)
         : toggleInputFields(cityIdInput, cityNameInput);
-    setWeatherDisplayState();
 }
 
 // Activates one input field and disables/clears the other.
@@ -40,6 +42,7 @@ async function getWeatherData(city) {
             : `${BASE_URL}&id=${city}`;
         const response = await fetch(url);
         const data = await response.json();
+        console.log(data);
         if (data.cod !== 200) throw new Error(data.message);
         renderWeatherData(data);
     } catch (error) {
@@ -82,6 +85,7 @@ function setInitialState() {
     cityNameRadio.checked = true;
     cityIdRadio.checked = false;
     toggleDisabledFields();
+    setWeatherDisplayState();
 }
 
 cancelBtn.addEventListener('click', setInitialState);
